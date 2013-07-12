@@ -2,3 +2,11 @@ body {
   width: 500px;
   margin: 0 auto;
 }
+
+a {
+  color: #BB620D;
+  text-decoration: none;
+  &:hover {
+    color: green;
+  }
+}

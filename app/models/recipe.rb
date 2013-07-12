@@ -8,11 +8,13 @@ class Recipe < ActiveRecord::Base
     .collect(&:strip)
     .collect(&:downcase)
     .reject(&:empty?)
-    .uniq
     .each do |ingredient_name|
-      ingreed = Ingredient.where(name: ingredient_name).first_or_create
-      self.recipe_ingredients.build(ingredient: ingreed)
+      self.add_ingredient Ingredient.where(name: ingredient_name).first_or_create
     end
+  end
+
+  def add_ingredient(ingredient)
+    self.recipe_ingredients.build(ingredient: ingredient)
   end
 
 end
