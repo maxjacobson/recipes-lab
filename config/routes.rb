@@ -1,5 +1,8 @@
 RecipesLab::Application.routes.draw do
+  resources :recipe_ingredients
+  resources :ingredients
   resources :recipes
+  root :to => 'recipes#index'
 
 
   # The priority is based upon order of creation:

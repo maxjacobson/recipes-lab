@@ -12,22 +12,21 @@ If you get clever, you can have 1 text box behave both ways, capable of adding a
 
 -->
 
-<form>
+<%= form_tag recipes_path do %>
   <p>
-    <label>Recipe Name</label>
-    <input type="text">
+    Recipe name:
+    <%= text_field_tag 'recipe[name]' %>
   </p>
-
   <p>
-    <label>Ingredients</label>
-    <ul>
-      <li><input></li>
-      <li><input></li>
-      <li><input></li>
-      <li><input></li>
-      <li><input></li>
-    </ul>
+    Ingredients:
   </p>
-
-  <p><input type="submit" /></p>
-</form>
+  <ul>
+    <% 5.times do %>
+      <li>
+        <%= text_field_tag 'recipe[ingredients_to_add][]' %>
+      </li>
+    <% end %>
+    <%= submit_tag %>
+  </ul>
+  
+<% end %>
